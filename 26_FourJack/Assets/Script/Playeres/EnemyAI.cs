@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyAI : Players
 {
-
-
-
     public override void PlayerAction()
     {
         NormalEnemyAI();
@@ -20,6 +17,6 @@ public class EnemyAI : Players
         Card newCard = DeckHandler.DrawCard();
 
         handOfCards.Add(newCard);
-        Debug.Log($"Player drew card{newCard}");
+        Debug.Log($"Enemy drew card{newCard}");
     }
 }

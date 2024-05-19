@@ -5,11 +5,15 @@ using UnityEngine;
 
 public abstract class Players : MonoBehaviour
 {
+
+    [SerializeField] private short healt;
+
     protected List<Card> handOfCards;
 
     protected GameHander posibolActions;
 
-    public Action<short> OnAddChipL;
+    // actions
+    public Action<short> OnAddChip;
 
     private void Awake()
     {
@@ -36,13 +40,13 @@ public abstract class Players : MonoBehaviour
 
     public virtual void PlayerAction()
     {
-
+        Debug.Log("Player has ended there turn");
         posibolActions.HasDonAction();
     }
 
     public void AddChip(short howMutheToAdd)
     {
-        OnAddChipL?.Invoke(howMutheToAdd);
+        OnAddChip?.Invoke(howMutheToAdd);
     }
 
 }

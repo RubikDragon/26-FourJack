@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2632204cb419245ae2c0ea4d42fe97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healt: 50
   ActionUI: {fileID: 501789439}
-  healt: 0
   isPlayer: 1
 --- !u!4 &21431127
 Transform:
@@ -1147,14 +1147,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7851fae28a9e8a8449b055a5bc73e17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScore: 21
+  maxScore: 26
   turnAmount: 3
   cards:
   - {fileID: 11400000, guid: 80cc05720a653244faba8c8e2c0c5028, type: 2}
   - {fileID: 11400000, guid: 1354a33529759e64a9d2a8f5288aaf19, type: 2}
   - {fileID: 11400000, guid: 9b2057654548b5943863c3e861327e4a, type: 2}
-  dealer: {fileID: 0}
-  Playeres: []
+  - {fileID: 11400000, guid: d9831519f2b760d4daec6a7be3d0db6a, type: 2}
+  - {fileID: 11400000, guid: c38da7dd6a453c345aa5c4cef08b92f4, type: 2}
+  - {fileID: 11400000, guid: 2e0197a8fff26754692c2c4513c1e1e0, type: 2}
+  - {fileID: 11400000, guid: cf625cc548ac0d24d88d9c8b2963ebb6, type: 2}
+  dealer: {fileID: 2049801555}
+  Playeres:
+  - {fileID: 21431126}
+  - {fileID: 1253255659}
 --- !u!4 &717376366
 Transform:
   m_ObjectHideFlags: 0
@@ -1962,6 +1968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e436826c49bea4f8570bdd011d83c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healt: 50
 --- !u!1001 &1314049297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2847,13 +2854,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 21431125}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 21431126}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: EndPlayerAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3595,6 +3602,7 @@ GameObject:
   - component: {fileID: 2049801554}
   - component: {fileID: 2049801553}
   - component: {fileID: 2049801552}
+  - component: {fileID: 2049801555}
   m_Layer: 0
   m_Name: Dealer
   m_TagString: Untagged
@@ -3667,6 +3675,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049801555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049801550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003b7be0204109b4b9a5070f4a0d14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blankCard: {fileID: 11400000, guid: 7ec659b8fdcedc44a9af42b61ee6018b, type: 2}
 --- !u!1001 &2110678501
 PrefabInstance:
   m_ObjectHideFlags: 0

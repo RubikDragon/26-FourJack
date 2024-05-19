@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Players, IactionAbol
+public class Player : Players
 {
     [SerializeField] private GameObject ActionUI;
 
-
-    [SerializeField] private short healt;
     [SerializeField] private bool isPlayer;
 
     // events
@@ -24,18 +22,6 @@ public class Player : Players, IactionAbol
     public override void PlayerAction()
     {
         ActionUI.SetActive(true);
-
-        base.PlayerAction();
-        throw new NotImplementedException();
-    }
-
-    public void Action()
-    {
-
-        ActionUI.SetActive(true);
-
-        base.PlayerAction();
-        throw new NotImplementedException();
     }
 
     // called by button
@@ -52,7 +38,7 @@ public class Player : Players, IactionAbol
     // ís called by a button when the player has don a atcion
     public void EndPlayerAction()
     {
-        Debug.Log("Player has ended there turn");
+        Debug.Log("the Player has ended there turn");
 
         ActionUI.SetActive(false);
         posibolActions.HasDonAction();

@@ -14,7 +14,8 @@ public class GameHander : MonoBehaviour
     [SerializeField] private Players[] Playeres;
     [SerializeField] private IactionAbol[] actions;
 
-    private bool hasDonAction;  
+    private bool hasDonAction;
+    private bool roundIsGoving;
 
 
     public Action OnRoundEnd;
@@ -26,6 +27,10 @@ public class GameHander : MonoBehaviour
 
     private void Awake()
     {
+        // likes all the playeres with the game
+        foreach (Players player in Playeres)
+            player.LinkWithGame(this);
+
         GameIsGoving();
     }
 
@@ -39,34 +44,32 @@ public class GameHander : MonoBehaviour
     {
         int debug = 0;
 
-        // likes all the playeres with the game
-        foreach (Players player in Playeres)
-            player.LinkWithGame(this);
-
-
         // keeps goving fruge rounds ontil there is only one player left
         while (Playeres.Length > 1 && debug !< 20)
         {
-            StartCoroutine(Round());
+            if (!roundIsGoving)
+            {
+                roundIsGoving = true;
+                StartCoroutine(Round());
+            }
+            
             debug++;
             
         }
-/*
+
         // Checks if the player won or not
-        if (players[0].GetIfIsPlayer() == true)
+        if (Playeres[0] is Player)
         {
             OnPlayerWin?.Invoke();
         }
         else
         {
             OnPlayerLose?.Invoke();
-        }*/
+        }
     }
 
     private IEnumerator Round()
     {
-        Debug.Log("Was don");
-
         var numbers = cards;
         numbers.Shuffle();
 
@@ -76,18 +79,22 @@ public class GameHander : MonoBehaviour
         // contines to go fruge turns ontil turnAmount is reaced
         for (int turns = 0; turns < turnAmount; turns++)
         {
+            Debug.Log($"Turn:({turns})");
+
             // adds card to dealer
             dealer.DrawCard(DeckHandler.DrawCard());
 
             foreach (Players action in Playeres)
             {
                 // calles that that player now has to make a action
-                action.PlayerAction();
+
                 hasDonAction = false;
+                action.PlayerAction();
+
 
                 // waits ontil the player is don with there action before moving on to the next player
                 yield return new WaitUntil(() => hasDonAction == true);
-
+                //yield return null;
 /*                while (!hasDonAction)
                 {
                     yield return null;
@@ -95,8 +102,12 @@ public class GameHander : MonoBehaviour
             }
         }
 
-        OnRoundEnd.Invoke();
+        
 
+        OnRoundEnd?.Invoke();
+
+        Debug.Log("round has ended");
+        roundIsGoving = false;
         // damage player and if there belove 0 then remove them from the list
     }
 
