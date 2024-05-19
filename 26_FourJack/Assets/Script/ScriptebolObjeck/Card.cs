@@ -6,6 +6,7 @@ using UnityEngine;
 public class Card : ScriptableObject
 {
     //suits: clubs (♣), diamonds ( ), hearts (♥) and spades (♠). IsCard
+    
     public enum Suits
     {
         Club,
@@ -14,13 +15,14 @@ public class Card : ScriptableObject
         spade
     }
 
+    [System.Serializable]
     public struct CardInfo
     {
         public Suits suits;
-        public ushort Nummber;
+        [Range(1, 7)] public ushort Nummber;
     }
 
-    [SerializeField] public CardInfo IsCard;
+    public CardInfo IsCard;
 
     public CardInfo GetCardInfo()
     {
