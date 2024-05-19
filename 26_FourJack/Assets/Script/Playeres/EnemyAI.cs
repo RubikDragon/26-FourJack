@@ -17,6 +17,9 @@ public class EnemyAI : Players
 
     private void NormalEnemyAI()
     {
-        handOfCards.Add(DeckHandler.DrawCard());
+        Card newCard = DeckHandler.DrawCard();
+
+        handOfCards.Add(newCard);
+        Debug.Log($"Player drew card{newCard}");
     }
 }

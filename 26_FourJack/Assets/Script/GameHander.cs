@@ -39,6 +39,10 @@ public class GameHander : MonoBehaviour
     {
         int debug = 0;
 
+        // likes all the playeres with the game
+        foreach (Players player in Playeres)
+            player.LinkWithGame(this);
+
 
         // keeps goving fruge rounds ontil there is only one player left
         while (Playeres.Length > 1 && debug !< 20)
