@@ -11,7 +11,7 @@ public class DeckOnBord : MonoBehaviour
     private List<GameObject> cards;
 
     [SerializeField] Players[] OnCardDrawEvent;
-    [SerializeField] GameHander OnRoundEndEvent;
+    [SerializeField] GameHandler OnRoundEndEvent;
 
     #endregion
 

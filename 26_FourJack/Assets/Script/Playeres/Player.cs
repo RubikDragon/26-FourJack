@@ -57,8 +57,6 @@ public class Player : Players
     // ís called by a button when the player has don a atcion
     public void EndPlayerAction()
     {
-        Debug.Log("the Player has ended there turn");
-
         ActionUI.SetActive(false);
         posibolActions.HasDonAction();
     }

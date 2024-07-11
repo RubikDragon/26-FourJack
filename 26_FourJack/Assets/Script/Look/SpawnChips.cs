@@ -18,7 +18,7 @@ namespace BackJackSystem.UI
         [SerializeField] private Transform chipSpawnPositon;
 
         [Space(10)]
-        [SerializeField] private GameHander onRoundEnd;
+        [SerializeField] private GameHandler onRoundEnd;
 
         private List<GameObject> chips; 
 

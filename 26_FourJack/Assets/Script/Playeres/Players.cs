@@ -12,7 +12,7 @@ public abstract class Players : MonoBehaviour
 
     protected List<Card> handOfCards;
 
-    protected GameHander posibolActions;
+    protected GameHandler posibolActions;
 
     public byte Healt { get => healt;}
 
@@ -27,10 +27,12 @@ public abstract class Players : MonoBehaviour
     }
 
     // sets up valide informason
-    public void GameSetUp(GameHander link, byte SetHealt)
+    public void GameSetUp(GameHandler link, byte SetHealt)
     {
         posibolActions = link;
         healt = SetHealt;
+
+        ChipHandler.AddChips(1);
         OnDamge?.Invoke(healt);
     }
 
@@ -62,6 +64,7 @@ public abstract class Players : MonoBehaviour
     public void DamagePlayer(byte damge)
     {
         healt -= damge;
+        Debug.Log($"{this.name} has takken {damge} damge and now only has {healt}");
         OnDamge?.Invoke(healt);
     }
 

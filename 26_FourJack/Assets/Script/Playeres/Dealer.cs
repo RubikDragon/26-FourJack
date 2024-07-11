@@ -26,4 +26,17 @@ public class Dealer : MonoBehaviour
         dealerCards.Add(card);
         OnDealerDraw?.Invoke(card);
     }
+
+    // returns the playres hand point
+    public ushort GetDealerScore()
+    {
+        ushort totalScore = 0;
+
+        foreach (Card cardvalue in dealerCards)
+        {
+            totalScore += cardvalue.CardNummber;
+        }
+
+        return totalScore;
+    }
 }

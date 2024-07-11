@@ -13,7 +13,7 @@ namespace BackJackSystem.Look
         private List<GameObject> cardsIndHand;
 
         [Header("EventRefendse")]
-        [SerializeField] private GameHander onRoundEnd;
+        [SerializeField] private GameHandler onRoundEnd;
 
         protected virtual void Awake()
         {

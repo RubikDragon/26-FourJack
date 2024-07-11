@@ -1,13 +1,13 @@
-﻿using BackJackSystem;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace BackJackSystem
 {
 
-    public class GameHander : MonoBehaviour
+    public class GameHandler : MonoBehaviour
     {
         private enum GameState
         {
@@ -49,7 +49,7 @@ namespace BackJackSystem
 
         private void Awake()
         {
-            ChipHandler.SetMaxChips(10);
+            ChipHandler.SetMaxChips(9);
             gameState = GameState.GameBegin;
 
             // likes all the playeres with the game
@@ -167,13 +167,31 @@ namespace BackJackSystem
         private void RoundWinder()
         {
             List<Players> rank = new List<Players>(inGamePlayers);
-            CustumSord sort = new CustumSord();
+            List<Players> overMax = new List<Players>();
 
-            // sorts the playeres by score. (lowest to highst)
-            rank.Sort(sort);
+            foreach (Players player in inGamePlayers)
+            {
+                if (maxScore < player.GetPlayerScore() + dealer.GetDealerScore())
+                {
+                    overMax.Add(player);
+                }
+            }
 
-            // damages the player with the smallest score and if there belove 0 then remove them from the list
-            DamagePlayer(rank[0]);
+            // indsures that if a player has over the maxScore then there the one to take damage
+            if (overMax.Count > 0)
+            {
+                int ranToTakeDamge = Random.Range(0, overMax.Count);
+                DamagePlayer(overMax[ranToTakeDamge]);
+            }
+            else
+            {
+                // sorts the playeres by score. (lowest to highst)
+                CustumSord sort = new CustumSord();
+                rank.Sort(sort);
+
+                // damages the player with the smallest score and if there belove 0 then remove them from the list
+                DamagePlayer(rank[0]);
+            }
         }
 
         private void DamagePlayer(Players player)
@@ -187,8 +205,6 @@ namespace BackJackSystem
         {
             gameState = GameState.DonAction;
         }
-
-
     }
 
     class CustumSord : IComparer<Players>
