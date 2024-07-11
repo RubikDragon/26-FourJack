@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436294f47cd736a4797cfaafc9dfb319, type: 3}
   m_Name: Heart3
   m_EditorClassIdentifier: 
+  cardSuit: 2
+  cardNummber: 3
+  cardLook: {fileID: 100000, guid: 7450257b07d30ee45b5b72c5754e7c0c, type: 3}

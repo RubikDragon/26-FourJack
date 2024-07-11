@@ -8,17 +8,19 @@ public static class DeckHandler
     // the current deck
     private static Stack<Card> deck;
 
-    public static Action OnCardDraw;
-
     public static void SetDeck(Card[] cards)
     {
+        string cardOrder = "";
+
         deck = new Stack<Card>(cards);
 
         // debug shows that deck is random
         foreach (Card iss in deck)
         {
-            Debug.Log(iss);
+            cardOrder += $"[{iss}],";
         }
+
+        Debug.Log(cardOrder);
     }
 
     public static Card PeekTopCard()
@@ -29,10 +31,6 @@ public static class DeckHandler
     // somone draws a card
     public static Card DrawCard()
     {
-        OnCardDraw?.Invoke();
-        return deck.Pop();
+        return deck.Pop();        
     }
-
-
-
 }

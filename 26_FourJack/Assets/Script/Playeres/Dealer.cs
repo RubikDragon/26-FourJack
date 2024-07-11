@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class Dealer : MonoBehaviour
 { 
-    private bool hasDrawenBlank;
+    private bool hasDrawenBlank = false;
     [SerializeField] private Card blankCard; 
 
-    public Action<Card> OnDealerDraw;
+    public event Action<Card> OnDealerDraw;
 
     private List<Card> dealerCards = new List<Card>();
 
-    public void DrawCard(Card card)
+    public void DealerGetCard()
     {
+        Card card = DeckHandler.DrawCard();
+
         if (!hasDrawenBlank)
         {
             hasDrawenBlank = true;
@@ -23,6 +25,5 @@ public class Dealer : MonoBehaviour
 
         dealerCards.Add(card);
         OnDealerDraw?.Invoke(card);
-
     }
 }

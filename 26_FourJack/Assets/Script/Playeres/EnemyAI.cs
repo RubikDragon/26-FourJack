@@ -14,9 +14,11 @@ public class EnemyAI : Players
 
     private void NormalEnemyAI()
     {
-        Card newCard = DeckHandler.DrawCard();
+        DrawCard();
+    }
 
-        handOfCards.Add(newCard);
-        Debug.Log($"Enemy drew card{newCard}");
+    public override bool MathChipRaise(byte chipAmount)
+    {
+        return base.MathChipRaise(chipAmount);
     }
 }

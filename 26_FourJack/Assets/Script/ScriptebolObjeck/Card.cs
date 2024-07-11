@@ -9,23 +9,20 @@ public class Card : ScriptableObject
     
     public enum Suits
     {
+        Blank,
         Club,
         Heart,
         Diamond,
         spade
     }
 
-    [System.Serializable]
-    public struct CardInfo
-    {
-        public Suits suits;
-        [Range(1, 7)] public ushort Nummber;
-    }
+    [SerializeField] private Suits cardSuit;
+    [SerializeField] [Range(0, 7)] private byte cardNummber;
 
-    public CardInfo IsCard;
+    [Space(5)]
+    [SerializeField] private GameObject cardLook;
 
-    public CardInfo GetCardInfo()
-    {
-        return IsCard;
-    }
+    public Suits CardSuit { get => cardSuit;}
+    public byte CardNummber { get => cardNummber;}
+    public GameObject CardLook { get => cardLook;}
 }
