@@ -49,7 +49,7 @@ namespace BackJackSystem
 
         private void Awake()
         {
-            ChipHandler.SetMaxChips(9);
+            ChipHandler.SetMaxChips(10);
             gameState = GameState.GameBegin;
 
             // likes all the playeres with the game
@@ -58,7 +58,7 @@ namespace BackJackSystem
 
             ChipHandler.OnRaise += ChipHandler_OnChipAdded;
 
-            GameIsGoving();
+            GameIsOn();
         }
 
         private void ChipHandler_OnChipAdded(Players raiser, byte raisAmount)
@@ -66,7 +66,7 @@ namespace BackJackSystem
             BidRaised(raiser, raisAmount);
         }
 
-        private void GameIsGoving()
+        private void GameIsOn()
         {
             if (inGamePlayers.Count >= 1 && gameState == GameState.RoundEnd || gameState == GameState.GameBegin)
             {
@@ -122,7 +122,7 @@ namespace BackJackSystem
             if (!RoundHasBeanStoped)
             {
                 RoundWinder();
-                GameIsGoving();
+                GameIsOn();
             }
 
         }
@@ -157,7 +157,7 @@ namespace BackJackSystem
                     HasDonAction();
                     RoundHasBeanStoped = false;
                     DamagePlayer(player);
-                    GameIsGoving();
+                    GameIsOn();
 
                     break;
                 }
