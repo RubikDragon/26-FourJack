@@ -33,4 +33,22 @@ public static class DeckHandler
     {
         return deck.Pop();        
     }
+
+
+    // if i finde a way around the Dictionary. then make this class a struckt
+    private class DeckSystem<T>
+    {
+        Dictionary<T,bool> kweasdw = new Dictionary<T, bool>();
+
+        public void ShuffelDeck()
+        {
+
+        }
+
+
+        public void DrawCard()
+        {
+
+        }
+    }
 }
